@@ -11,7 +11,7 @@ void Game::initializeVariables()
 	this->mouseHeld = false;
 	this->endGameFlag = false;
 
-}
+}d
 
 void Game::initializeWindow()
 {
