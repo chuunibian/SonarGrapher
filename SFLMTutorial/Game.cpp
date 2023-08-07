@@ -31,8 +31,8 @@ void Game::initializeEnemy()
 	this->Enemy.setSize(Vector2f(50.f, 50.f));
 	//this->Enemy.setScale(Vector2f(0.5f, 0.5f));
 	this->Enemy.setFillColor(Color::Cyan);
-	this->Enemy.setOutlineColor(Color::Green);
-	this->Enemy.setOutlineThickness(20.f);
+	//this->Enemy.setOutlineColor(Color::Green);
+	//this->Enemy.setOutlineThickness(20.f);
 }
 
 void Game::initializeFont()
@@ -202,11 +202,21 @@ void Game::updateEnemies()
 			for (auto i = 0; i < this->Enemies.size() && deletedFlag == false; i++) { //check which enemy was clicked then delete
 				if (this->Enemies[i].getGlobalBounds().contains(this->mousePositionView)) {
 
-					if (this->Enemies[i].getFillColor() == Color::Magenta) {
+					if (this->Enemies[i].getFillColor() == Color::Blue) {
 						this->points += 10;
 					}
-
-
+					else if (this->Enemies[i].getFillColor() == Color::Yellow) {
+						this->points += 8;
+					}
+					else if (this->Enemies[i].getFillColor() == Color::Green) {
+						this->points += 6;
+					}
+					else if (this->Enemies[i].getFillColor() == Color::White){
+						this->points += 4;
+					}
+					else if (this->Enemies[i].getFillColor() == Color::Magenta) {
+						this->points += 2;
+					}
 
 					//Delete enemy
 					deletedFlag = true;
