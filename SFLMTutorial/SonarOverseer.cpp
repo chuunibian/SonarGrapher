@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "Game.h"
+#include "Sonar.h"
 
 using namespace sf;
 
@@ -7,16 +7,14 @@ int main()
 {
     srand(static_cast<unsigned>(time(NULL)));
 
-    Game mainGame;
+    Sonar mainSonar;
     
-    while (mainGame.isWindowOpen())
+    while (mainSonar.isWindowOpen())
     {
         //Update, update the status logic
-        mainGame.update();
-
+        mainSonar.update();
         //Render, visualizing updates
-        mainGame.render();
-
+        mainSonar.render();
     }
 
     return 0;

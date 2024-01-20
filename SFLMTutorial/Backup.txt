@@ -1,0 +1,52 @@
+#include "ObstacleLine.h"
+
+void ObstacleLine::initializeVariables()
+{
+	//For this reading format is angle first line then distance second line ~360 total lines
+	//Lines are consecutive
+	int counter = 0;
+	std::ifstream fileInput("Misc/serialOutput.txt");
+	std::string angle = " ";
+	std::string distance= " ";
+	while (counter < 180) {
+		std::getline(fileInput, angle);
+		std::getline(fileInput, distance);
+		int int_angle = stoi(angle);
+		int int_distance = stoi(distance);
+		std::cout << distance << "\n";
+		rectangle_size = Vector2f(8.5, MAX_DISTANCE_REC - calculateRatio(int_distance));
+		obstacle_lines[counter].setOrigin(4.25, -(calculateRatio(int_distance))); //rotating around negative angle
+		obstacle_lines[counter].setRotation(counter + 90);
+		obstacle_lines[counter].setPosition(525, 550); //positon is static for all
+		obstacle_lines[counter].setSize(rectangle_size);
+		obstacle_lines[counter].setFillColor(Color(255,0,0,255));
+		counter += 1;
+	}
+	fileInput.close();
+}
+
+int ObstacleLine::calculateRatio(float distance)
+{
+	std::cout << "*" << distance / MAX_DISTANCE * MAX_DISTANCE_REC << "\n";
+	return distance / MAX_DISTANCE * MAX_DISTANCE_REC;
+}
+
+ObstacleLine::ObstacleLine()
+{
+	initializeVariables();
+}
+
+ObstacleLine::~ObstacleLine()
+{
+}
+
+void ObstacleLine::render(RenderWindow& target)
+{
+	for (int i = 0; i < 180; i++) {
+		target.draw(obstacle_lines[i]);
+	}
+}
+
+void ObstacleLine::update()
+{
+}

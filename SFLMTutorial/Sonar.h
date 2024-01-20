@@ -7,13 +7,15 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/Audio.hpp>
-#include <SFML/Network.hpp>
+
+
+#include "Grid.h"
+#include "FillLine.h"
+#include "ObstacleLine.h"
 
 using namespace sf;
 
-class Game
+class Sonar
 {
 private:
 
@@ -26,61 +28,42 @@ private:
 	Vector2f mousePositionView; //float
 
 
-	/* ======= Game Objects ======= */
-	RectangleShape Enemy; 
-	std::vector<RectangleShape> Enemies;
-
-
-	/* ======= Game Logics ======= */
-	unsigned int points;
-	int health;
-	float enemySpawnTimer;
-	float enemySpawnTimerMax;
-	unsigned int maxEnemies;
-	bool mouseHeld;
-	bool endGameFlag;
-	/* =========================== */
+	/* ======= Sonar Objects ======= */
+	Grid base_grid;
+	FillLine line;
+	ObstacleLine obstacle_line;
 
 
 	/* ======= Textures ======= */
 	Font font;
 	Text text;
-	/* ======================== */
 
 
 
 	/* ======= Initializing Functions ======= */
 	void initializeVariables();
 	void initializeWindow();
-	void initializeEnemy();
+	void initializeBaseplate();
 	void initializeFont();
 	void initializeText();
 
 public:
 
 	/* ======= Con Decon  ======= */
-	Game();
-	virtual ~Game();
+	Sonar();
+	virtual ~Sonar();
 	/* ========================== */
 
 
 	/* ======= Acessors ======= */
 	bool isWindowOpen();
-	const bool getEndGameFlag();
 	/* ======================== */
 
 
 	/* ======= Functions ======= */
-	void updateText();
 	void updateEvents();
-	void updateMousePosition();
-	void spawnEnemies();
 	void update();
-	void updateEnemies();
-
 	void render();
-	void renderText(RenderTarget& target);
-	void renderEnemies(RenderTarget& target);
 	
 };
 
