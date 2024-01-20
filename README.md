@@ -1,5 +1,5 @@
-# SFLMtutorial
+# Sonar Datapoint Grapher
 
 Author: Austin Bian
 
-Description SFLMtutorial: The intention of this code is to act as a sandbox for testing various different graphical elements within SFLM as well as compose proper OOP concepts in relation to polling game design.
+Grapher for the data sent in from arduino through txt and it outputs a graphical representation of a sonar.
